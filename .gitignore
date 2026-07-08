@@ -1,8 +1,19 @@
+# dependencies
 node_modules/
+
+# build output
 release/
+dist/
+
+# runtime data (never commit)
 data.db
-data.db-wal
-data.db-shm
-.env
+data.db-*
+uploads/
+
+# secrets / local config
 .jwt-secret
+.env
+.env.local
+
+# os
 .DS_Store
