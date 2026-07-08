@@ -28,9 +28,16 @@
 ## 빠른 시작 (Docker, 권장)
 
 ```bash
-git clone <repo-url> slacklite && cd slacklite
+git clone https://github.com/Rillmo/slacklite.git && cd slacklite
 docker compose up -d
 # http://localhost:3000 접속
+```
+
+클론 없이 미리 빌드된 이미지 사용:
+
+```bash
+docker run -d --name slacklite -p 3000:3000 -v slacklite-data:/data \
+  ghcr.io/rillmo/slacklite:latest
 ```
 
 데이터(SQLite DB + JWT 시크릿)는 `slacklite-data` 볼륨에 영속 저장됩니다.

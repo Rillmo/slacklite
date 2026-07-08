@@ -1,7 +1,7 @@
 services:
   slacklite:
     build: .
-    # image: ghcr.io/<your-username>/slacklite:latest  # 직접 빌드 대신 이미지 사용 시
+    # image: ghcr.io/rillmo/slacklite:latest  # 직접 빌드 대신 이미지 사용 시
     ports:
       - "3000:3000"
     volumes:

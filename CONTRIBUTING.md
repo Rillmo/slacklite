@@ -7,7 +7,7 @@ Thanks for your interest in contributing! SlackLite aims to stay small, dependen
 Requirements: **Node.js 23.4+** (Node 24 LTS recommended — uses the built-in `node:sqlite` module).
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Rillmo/slacklite.git
 cd slacklite
 npm install
 npm run dev        # server with auto-restart at http://localhost:3000

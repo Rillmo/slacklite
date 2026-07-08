@@ -32,9 +32,16 @@ An open-source, self-hosted Slack-style team chat. One Node.js process, one SQLi
 ## Quick start (Docker, recommended)
 
 ```bash
-git clone <repo-url> slacklite && cd slacklite
+git clone https://github.com/Rillmo/slacklite.git && cd slacklite
 docker compose up -d
 # open http://localhost:3000
+```
+
+Or use the prebuilt image without cloning:
+
+```bash
+docker run -d --name slacklite -p 3000:3000 -v slacklite-data:/data \
+  ghcr.io/rillmo/slacklite:latest
 ```
 
 Data (SQLite DB + JWT secret) persists in the `slacklite-data` volume.
