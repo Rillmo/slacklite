@@ -1,0 +1,8 @@
+node_modules/
+release/
+data.db
+data.db-wal
+data.db-shm
+.env
+.jwt-secret
+.DS_Store

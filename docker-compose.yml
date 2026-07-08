@@ -1,0 +1,19 @@
+services:
+  slacklite:
+    build: .
+    # image: ghcr.io/<your-username>/slacklite:latest  # 직접 빌드 대신 이미지 사용 시
+    ports:
+      - "3000:3000"
+    volumes:
+      - slacklite-data:/data
+    environment:
+      # 고정 시크릿을 쓰려면 주석 해제 (기본: 최초 실행 시 자동 생성 후 볼륨에 저장)
+      # JWT_SECRET: "change-me-to-a-long-random-string"
+      # 가입을 초대 코드로 제한하려면 주석 해제
+      # INVITE_CODE: "our-team-invite"
+      # nginx/Caddy/Traefik 뒤에서 운영하면 주석 해제
+      # TRUST_PROXY: "1"
+    restart: unless-stopped
+
+volumes:
+  slacklite-data:

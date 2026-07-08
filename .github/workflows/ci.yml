@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # Electron binary is only needed for desktop builds, not for server tests.
+      ELECTRON_SKIP_BINARY_DOWNLOAD: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t slacklite:ci .
+      - name: Smoke test container
+        run: |
+          docker run -d --name slacklite -p 3000:3000 slacklite:ci
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:3000/healthz > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          echo "healthcheck failed"; docker logs slacklite; exit 1

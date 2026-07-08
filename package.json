@@ -1,0 +1,50 @@
+{
+  "name": "slacklite",
+  "version": "0.1.0",
+  "description": "Open-source Slack-style team chat built with Node.js, Express, Socket.IO and SQLite",
+  "author": "SlackLite contributors",
+  "type": "module",
+  "main": "desktop/main.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test \"test/*.test.js\"",
+    "app": "electron .",
+    "dist": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "dev.slacklite.app",
+    "productName": "SlackLite",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**",
+      "server/**",
+      "public/**",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.business",
+      "target": [
+        "dir",
+        "dmg"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=23.4"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3",
+    "socket.io-client": "^4.8.3"
+  }
+}
